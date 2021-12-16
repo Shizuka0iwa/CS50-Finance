@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <h1>Transaction history</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Type</th>
+          <th scope="col">Symbol</th>
+          <th scope="col">Price</th>
+          <th scope="col">Number of shares</th>
+          <th scope="col">Date time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in range(history_num) %}
+          <tr>
+              {% if historys[i]["buy"] == True %}
+                <td>Bought</td>
+              {% else %}
+                <td>Sold</td>
+              {% endif%}
+            <td>{{ historys[i]["symbol"] }}</td>
+            <td>${{ historys[i]["price"] }}</td>
+            <td>{{ historys[i]["shares"] }}</td>
+            <td>{{ historys[i]["datetime"] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+{% endblock %}

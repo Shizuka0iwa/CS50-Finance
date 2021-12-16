@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Top
+{% endblock %}
+
+{% block main %}
+    <h1>{{ username }}'s assets</h1>
+
+    <div class="card-deck">
+      <div class="card bg-info" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Total balance</h5>
+          <p class="card-text">{{ total_balance }}</p>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Invests</h5>
+          <p class="card-text">{{ invests_balance }}</p>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Cash balance</h5>
+          <p class="card-text">{{ cash }}</p>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <h2>Stocks</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Name</th>
+          <th scope="col">Shares</th>
+          <th scope="col">Price</th>
+          <th scope="col">Market value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in range(assets_num) %}
+          <tr>
+            <td>{{ assets[i]["symbol"] }}</td>
+            <td>{{ assets[i]["name"] }}</td>
+            <td>{{ assets[i]["shares"] }}</td>
+            <td>{{ assets[i]["price"] }}</td>
+            <td>{{ assets[i]["market_value"] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+
+    <p style="text-align:left;">Get data: {{ now }}</p>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+        <div class="form-group">
+            <label for="symbolForSell">Select stock to sell</label>
+            <br>
+            <select multiple class="form-control" id="symbolForSell" name="symbol">
+                {% for i in range(asset_num) %}
+                    <option>{{ assets[i]["symbol"] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" name="shares" placeholder="Shares" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell the stock</button>
+    </form>
+
+{% endblock %}
